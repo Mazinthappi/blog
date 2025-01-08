@@ -1234,7 +1234,7 @@
   }
 
   .custom-swal-popup {
-    background: #000000; /* Dark background */
+    background: white; /* Dark background */
     color: #1f1a1a; /* White text */
     border-radius: 10px;
 }

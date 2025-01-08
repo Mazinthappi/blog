@@ -157,12 +157,12 @@
                 <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                     <li>
-                        <a href="forms-layouts.html">
+                        <a href="{{route('tag.index')}}">
                             <i class="bi bi-circle"></i><span>Tags List</span>
                         </a>
                     </li>
                     <li>
-                        <a href="forms-editors.html">
+                        <a href="{{route('tag.createPage')}}">
                             <i class="bi bi-circle"></i><span>Add Tags</span>
                         </a>
                     </li>
@@ -175,12 +175,12 @@
                 <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                     <li>
-                        <a href="forms-layouts.html">
+                        <a href="{{route('article.index')}}">
                             <i class="bi bi-circle"></i><span>Articles List</span>
                         </a>
                     </li>
                     <li>
-                        <a href="forms-editors.html">
+                        <a href="{{route('article.createPage')}}">
                             <i class="bi bi-circle"></i><span>Add Articles</span>
                         </a>
                     </li>

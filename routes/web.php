@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +33,20 @@ Route::middleware('admin')->group(function () {
     Route::get('category-editPage/{id}',[CategoryController::class,'editPage'])->name('category.editPage');
     Route::post('category-update/{id}',[CategoryController::class,'update'])->name('category.update');
     Route::get('category-delete/{id}',[CategoryController::class,'delete'])->name('category.delete');
+    //tag
+    Route::get('tag',[TagController::class,'index'])->name('tag.index');
+    Route::get('tag/createPage',[TagController::class,'createPage'])->name('tag.createPage');
+    Route::post('tag-create',[TagController::class,'create'])->name('tag.create');
+    Route::get('tag-editPage/{id}',[TagController::class,'editPage'])->name('tag.editPage');
+    Route::post('tag-update/{id}',[TagController::class,'update'])->name('tag.update');
+    Route::get('tag-delete/{id}',[TagController::class,'delete'])->name('tag.delete');
+    //article   
+    Route::get('article',[ArticleController::class,'index'])->name('article.index');
+    Route::get('article/createPage',[ArticleController::class,'createPage'])->name('article.createPage');
+    Route::post('article-create',[ArticleController::class,'create'])->name('article.create');
+    Route::get('article-editPage/{id}',[ArticleController::class,'editPage'])->name('article.editPage');
+    Route::post('article-update/{id}',[ArticleController::class,'update'])->name('article.update');
+    Route::get('article-delete/{id}',[ArticleController::class,'delete'])->name('article.delete');
+
 
 });
