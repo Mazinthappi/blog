@@ -46,6 +46,8 @@
                     <th scope="col">IMAGE</th>
                     <th scope="col">NAME</th>
                     <th scope="col">DESCRIPTION</th>
+                    <th scope="col">CATEGORY</th>
+                    <th scope="col">TAG</th>
                     <th scope="col">ACTION</th>
                 </tr>
             </thead>
@@ -57,6 +59,8 @@
                         <td><img src="{{ asset('/images/'.$article->image) }}" alt="profile Pic" height="100" width="100"></td>
                         <td>{{$article->name}}</td>
                         <td>{{$article->description}}</td>
+                        <td>{{$article->category->name}}</td> 
+                        <td>{{$article->tag->name}}</td>
                         <td>
                             <a href="{{route('article.editPage', encrypt($article->id))}}" class="ri-edit-2-fill"></a>
                             <a href="{{route('article.delete',encrypt($article->id))}}" class="ri-delete-bin-6-line"></a>

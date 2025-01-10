@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+use App\Models\Category;
+use App\Models\Tags;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -13,12 +15,16 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::paginate(5);
+        $articles = Article::with('tag','category')->paginate(5);
+        // return $articles;
+       
         return view('article.index', compact('articles'));
     }
     public function createPage()
     {
-        return view('article.create');
+        $categories=Category::get();
+        $tags = Tags::get();
+        return view('article.create',compact('categories','tags'));
     }
 
     public function create(ArticleRequest $request)
@@ -37,8 +43,10 @@ class ArticleController extends Controller
 
     public function editPage(string $id)
     {
-        $article = Article::find(decrypt($id));
-        return  view('article.edit', compact('article'));
+        $categories=Category::get();
+        $tags = Tags::get();
+        $article = Article::with('category','tag')->find(decrypt($id));
+        return  view('article.edit', compact('article','categories','tags'));
     }
 
 
@@ -48,9 +56,11 @@ class ArticleController extends Controller
             'name' => 'required',
             'description' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           
 
         ]);
         $article = Article::find(decrypt($id));
+        // dd($request->all());
         $article->update($request->all());
         if ($request->hasFile('image')) {
             $filename = time() . '.' . $request->image->getClientOriginalExtension();

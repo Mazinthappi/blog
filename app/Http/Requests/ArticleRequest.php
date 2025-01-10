@@ -25,6 +25,13 @@ class ArticleRequest extends FormRequest
             'name'=>'required|string',
             'description'=> 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|numeric',
+        ];
+    }
+
+    public function messages(){
+        return [
+            'category_id.required' => 'Category is required',
         ];
     }
 }

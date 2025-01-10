@@ -10,4 +10,11 @@ class Article extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table = 'articles';
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+    public function tag(){
+        return $this->belongsTo(Tags::class);
+    }
+    
 }
