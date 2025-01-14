@@ -23,7 +23,7 @@
         <h1 class="mb-4">Articles</h1>
         <div class="row">
             <!-- Article Card Example -->
-            <div class="col-md-4 mb-3">
+            <!-- <div class="col-md-4 mb-3">
                 <div class="card">
                     <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Article Title">
                     <div class="card-body">
@@ -32,18 +32,38 @@
                         <button class="btn btn-primary">Read More</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Repeat Article Cards -->
+           
+            @foreach ($categories as $category )
+
             <div class="col-md-4 mb-3">
                 <div class="card">
-                    <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Article Title">
+                <!-- <img  alt="profile Pic" > -->
+                    <img src="{{ asset('/images/'.$category->image) }}" height="200" width="100" class="card-img-top" alt="Article Title">
                     <div class="card-body">
-                        <h5 class="card-title">Another Article</h5>
-                        <p class="card-text">A quick summary of the content goes here...</p>
-                        <button class="btn btn-primary">Read More</button>
+                        <h5 class="card-title">{{$category->name}}</h5>
+                        <p class="card-text">{{$category->description}} </p>
+                        <a class="btn btn-primary" href="{{ route('showArticlePage',$category->id) }} ">Read More</a>
                     </div>
                 </div>
             </div>
+            @endforeach
+            <hr>
+            @foreach ($tags as $tag )
+
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                <!-- <img  alt="profile Pic" > -->
+                    <img src="{{ asset('/images/'.$tag->image) }}" height="200" width="100" class="card-img-top" alt="Article Title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$tag->name}}</h5>
+                        <p class="card-text">{{$tag->description}} </p>
+                        <a class="btn btn-primary" href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
             <!-- Add more cards as needed -->
         </div>
     </div>

@@ -4,21 +4,22 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('home.index');
-});
-// Route::get('/', function () {
-//     return view('admin.dashboard');
-// });
+
+
+
+Route::get('/', [HomeController::class,'home'])->name('home.dashboard');
+
+Route::get('/articlePage/{id}', [HomeController::class, 'articlePage'])->name('showArticlePage');
+
 
 Route::get('login-page', [AuthController::class, 'showLoginPage'])->name('loginPage');
 Route::get('register-page', [AuthController::class, 'showRegisterPage'])->name('registerPage');
-
 Route::post('do-register', [AuthController::class, 'doRegister'])->name('doRegister');
 Route::post('do-login', [AuthController::class, 'doLogin'])->name('doLogin');
 
